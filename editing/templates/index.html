@@ -1,0 +1,323 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiara Remover</title>
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/line-awesome/css/line-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <script type="text/javascript">
+        $(function () {
+            $("#about").hide();
+        });
+    </script>
+
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex">
+
+            <div class="logo mr-auto">
+                <h1 class="text-light"><a href="{% url 'home' %}">Kiara Remover</a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <nav class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li class="active"><a href="{% url 'home' %}">Home</a></li>
+
+                    <li class="drop-down"><a href="#">About</a>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Team</a></li>
+
+                            <li class="drop-down"><a href="#">Drop Down 2</a>
+                                <ul>
+                                    <li><a href="#">Deep Drop Down 1</a></li>
+                                    <li><a href="#">Deep Drop Down 2</a></li>
+                                    <li><a href="#">Deep Drop Down 3</a></li>
+                                    <li><a href="#">Deep Drop Down 4</a></li>
+                                    <li><a href="#">Deep Drop Down 5</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+
+                    <li class="get-started"><a href="#get-started">Get Started</a></li>
+                </ul>
+            </nav><!-- .nav-menu -->
+
+        </div>
+    </header><!-- End Header -->
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero">
+        <div class="hero-container" data-aos="fade-up">
+            <h1>Welcome to Kiara Remover</h1>
+            <h2>Remove your background and merge with other images</h2>
+            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main1">
+
+        <!-- ======= About Section ======= -->
+
+        <form method="post" action="{% url 'home' %}" enctype="multipart/form-data">
+             {% csrf_token %}
+                <section id="about" class="about  m-3">
+                <div class="container" data-aos="fade-up">
+                    <div class="col-lg-12">
+                        <div id="main" class="col-lg-3  col-md-5 col-6 d-md-flex m-auto py-5 align-items-md-stretch">
+                            <div class="count-box py-4">
+                                <i id="btnFileUpload" class="col-lg-12 icofont-document-folder text-center text-primary">
+                                </i>
+                                <span id="spnFilePath"></span>
+                                <input type="file" id="FileUpload1" name="file" multiple style="display: none">
+                                <input type="submit" name="submit" id="submit" style="display: none">
+
+                                <script type="text/javascript"
+                                    src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+                                <script type="text/javascript">
+                                    $(function () {
+                                        var fileupload = $("#FileUpload1");
+                                        var filePath = $("#spnFilePath");
+                                        var button = $("#btnFileUpload");
+                                        var submit= $("#submit");
+                                        $("#main2").hide();
+                                        button.click(function () {
+                                            fileupload.click();
+                                        });
+                                        fileupload.change(function () {
+                                        var fileName = $(this).val().split('\\')[$(this).val().split('\\').length - 1];
+                                                filePath.html("<b>Selected File: </b>" + fileName);
+                                                submit.click();
+                                                $("#main1").show();
+                                                {#//$("#main2").show();#}
+                                            });
+                                        });
+                                    </script>
+                                    <p class="text-center text-primary">Upload Images</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+        </form>
+
+
+
+
+        <!-- End About Section -->
+    </main>
+
+    <main id="main2" class="mt-6">
+        <section id="about" class="about mt-6">
+            <div class="container mt-6">
+                <div class="col-lg-12 pt-5 mt-3">
+                    <!-- ======= Services Section ======= -->
+                    <section id="services">
+                        <div class=" wow fadeIn pt-5">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                                    <div class="box"
+                                        style="background-image: url('assets/img/blog-author.jpg'); background-size:cover;">
+                                        <button class="x btn btn-light text-primary mr-3"><i class="icofont-edit"></i>
+                                            Remove
+                                            background</button>
+                                        <button class="x btn btn-light text-primary" data-toggle="modal"
+                                            data-target="#aboutxx"><i class="icofont-plus"></i>
+                                            Edit</button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="box"
+                                        style="background-image: url('assets/img/blog-author.jpg'); background-size:cover;">
+                                        <button class="x btn btn-light text-primary mr-3"><i class="icofont-edit"></i>
+                                            Remove
+                                            background</button>
+                                        <button class="x btn btn-light text-primary"><i class="icofont-plus"></i>
+                                            Edit</button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="box"
+                                        style="background-image: url('assets/img/blog-author.jpg'); background-size:cover;">
+                                        <button class="x btn btn-light text-primary mr-3"><i class="icofont-edit"></i>
+                                            Remove
+                                            background</button>
+                                        <button class="x btn btn-light text-primary"><i class="icofont-plus"></i>
+                                            Edit</button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="box"
+                                        style="background-image: url('assets/img/blog-author.jpg'); background-size:cover;">
+                                        <button class="x btn btn-light text-primary mr-3"><i class="icofont-edit"></i>
+                                            Remove
+                                            background</button>
+                                        <button class="x btn btn-light text-primary"><i class="icofont-plus"></i>
+                                            Edit</button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="box"
+                                        style="background-image: url('assets/img/blog-author.jpg'); background-size:cover;">
+                                        <button class="x btn btn-light text-primary mr-3"><i class="icofont-edit"></i>
+                                            Remove
+                                            background</button>
+                                        <button class="x btn btn-light text-primary"><i class="icofont-plus"></i>
+                                            Edit</button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="box"
+                                        style="background-image: url('assets/img/blog-author.jpg'); background-size:cover;">
+                                        <button class="x btn btn-light text-primary mr-3"><i class="icofont-edit"></i>
+                                            Remove
+                                            background</button>
+                                        <button class="x btn btn-light text-primary"><i class="icofont-plus"></i>
+                                            Edit</button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="box"
+                                        style="background-image: url('assets/img/blog-author.jpg'); background-size:cover;">
+                                        <button class="x btn btn-light text-primary mr-3"><i class="icofont-edit"></i>
+                                            Remove
+                                            background</button>
+                                        <button class="x btn btn-light text-primary"><i class="icofont-plus"></i>
+                                            Edit</button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </section><!-- End Services Section -->
+
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <h3>Kiara Remover</h3>
+                        <p>Kiara Remover is a perfect tool for removing background of images and do your extra
+                            editing, also for merging with other images. Try our online tool.</p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Terms of service</a></li>
+                            <li><a href="#">Privacy policy</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h4>Contact Us</h4>
+                        <p>
+                            A108 Adam Street <br>
+                            New York, NY 535022<br>
+                            United States <br>
+                            <strong>Phone:</strong> +1 5589 55488 55<br>
+                            <strong>Email:</strong> info@example.com<br>
+                        </p>
+
+                        <div class="social-links">
+                            <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+                            <a href="#" class="google-plus"><i class="icofont-skype"></i></a>
+                            <a href="#" class="linkedin"><i class="icofont-linkedin"></i></a>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-newsletter">
+                        <h4>Our Newsletter</h4>
+                        <p>Get latest updates directly to your mail and stay updated. Subscribe to our newsletter.</p>
+                        <form action="" method="get">
+                            <input type="email" name="email"><input type="submit" value="Subscribe">
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Foxiton</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                Designed by <a href="https://foxiton.web.app">Foxiton Global</a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <!-- ======= model box Section ======= -->
+    <section id="aboutxx" class="modal about mt-2" style=" margin-top:-100px;">
+
+        <div class="row" style="height: 600px;" style="background-color: #252525;">
+
+            <div class="col-lg-12 pt-4 pt-lg-0" style="background-color: #252525;">
+                <div class="modal-header border-0" style="background-color: #252525;">
+                    <button class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <iframe src="https://www.photopea.com" title="" style="height: 450px;width:100%;"></iframe>
+            </div>
+        </div>
+        <div class="modal-footer" style="background-color: #252525;">
+            <button class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+    </section><!-- End model box Section -->
+
+
+
+
+</body>
+<!-- Vendor JS Files -->
+<script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+<script src="{% static 'assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'assets/vendor/counterup/counterup.min.js' %}"></script>
+<script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
+<script src="{% static 'assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+</html>
